@@ -1,0 +1,113 @@
+
+
+# --- Diciembre 2020 ----
+
+## Obtener token barrer de Facebook 
+
+https://graph.facebook.com/oauth/access_token?client_id=your-app-id&client_secret=your-secret-key&grant_type=client_credentials
+
+--- Noviembre 2020 ----
+
+
+HAcking Nigths: https://www.twitch.tv/videos/805699026
+
+
+
+
+Chips hardware
+
+
+dstike deauther
+https://dstike.com/products/dstike-deauther-watch-v2
+https://www.amazon.com/-/es/DSTIKE-Deauther-Pulsera-control-1-3OLED/dp/B07Z9G7VQ4
+
+
+d duino
+https://github.com/lspoplove/D-duino
+
+
+~ Bluethoot
+
+
+ubertooth one
+https://www.greatscottgadgets.com/ubertoothone/goog
+https://www.amazon.com.mx/SparkFun-WRL-10573-ubertooth-One/dp/B007R9UPHA
+
+
+bluefruit LE Sniffer nrf51822
+https://www.adafruit.com/product/2269
+https://www.amazon.com.mx/Adafruit-Bluefruit-Sniffer-Bluetooth-nRF51822/dp/B00SKWGPE0
+
+~ NFC ~ RFDI
+
+SCL3711
+https://www.identiv.com/products/logical-access-control/smart-card-readers/mobile/scl3711/
+
+acr122u
+https://www.amazon.com.mx/s?k=acr122u&adgrpid=56796699094&gclid=EAIaIQobChMIkPqR5LSM7QIV4gl9Ch2NowNAEAAYASAAEgKIafD_BwE&hvadid=286731049820&hvdev=c&hvlocphy=9073838&hvnetw=g&hvqmt=e&hvrand=16422185000167609084&hvtargid=kwd-329816360524&hydadcr=4092_9472580&tag=googhydr0mx-20&ref=pd_sl_woypo9xyk_e
+
+Proxmark rdv4
+https://proxmark.com/
+
+
+chamaleon mini
+https://www.amazon.com/-/es/ISO14443-Chameleon-rdv2-0-Kits-duplicador-uid13-56mhz/dp/B073TDLQS2
+
+
+
+wiegand
+
+esp rfid tool
+ESP RFID Tool is a WiFi enabled tap for the Wiegand protocol
+https://hackerwarehouse.com/product/esp-rfid-tool/
+
+
+Blekey
+BLEKey is a Bluetooth Low Energy (BLE) enabled tap for the Wiegand protocol, 
+https://hackerwarehouse.com/product/blekey/
+
+
+dvb-t stick
+
+HackRF
+https://greatscottgadgets.com/hackrf/
+
+https://www.amazon.com/-/es/hackrf-Software-Defined-ant500-Antena-Bundle/dp/B01H3T2U7G
+
+
+BladeRF
+https://www.nuand.com/bladerf-2-0-micro/?gclid=EAIaIQobChMIttnd47aM7QIVPxitBh1XXQomEAAYASAAEgKriPD_BwE
+
+
+YARD Stick One
+https://greatscottgadgets.com/yardstickone/
+
+
+obd2 em327
+Eer automotriz intefaz OBDII
+On Borard Diagnostic
+https://herramientaautomotriz.com/elm327/
+
+
+OBD2 Macchina M2
+https://www.macchina.cc/m2-introduction
+
+
+LORAWAN
+
+
+
+
+
+
+~~ Password Craking
+
+https://terahash.com/
+
+
+
+
+
+hak5 sponsorship 
+
+https://shop.hak5.org/pages/sponsorship

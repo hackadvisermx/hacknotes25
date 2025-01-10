@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest:manifest xmlns:manifest="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0" manifest:version="1.3" xmlns:loext="urn:org:documentfoundation:names:experimental:office:xmlns:loext:1.0">
+ <manifest:file-entry manifest:full-path="/" manifest:version="1.3" manifest:media-type="application/vnd.oasis.opendocument.text"/>
+ <manifest:file-entry manifest:full-path="meta.xml" manifest:media-type="text/xml" manifest:size="2071">
+  <manifest:encryption-data manifest:checksum-type="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0#sha256-1k" manifest:checksum="TvnavjsP/nX95sz68z+cWBVWry3O3zfNkhIOg8V/ecY=">
+   <manifest:algorithm manifest:algorithm-name="http://www.w3.org/2001/04/xmlenc#aes256-cbc" manifest:initialisation-vector="uGQRs0o8pZuI9YJLCjx1og=="/>
+   <manifest:start-key-generation manifest:start-key-generation-name="http://www.w3.org/2000/09/xmldsig#sha256" manifest:key-size="32"/>
+   <manifest:key-derivation manifest:key-derivation-name="PBKDF2" manifest:key-size="32" manifest:iteration-count="100000" manifest:salt="FgEiCwxXbTHWFV8BjxNUeA=="/>
+  </manifest:encryption-data>
+ </manifest:file-entry>
+ <manifest:file-entry manifest:full-path="settings.xml" manifest:media-type="text/xml" manifest:size="13858">
+  <manifest:encryption-data manifest:checksum-type="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0#sha256-1k" manifest:checksum="d/1+q1tazFSyf853156pmi1QzhNLFHb+bPkmnpxjpIc=">
+   <manifest:algorithm manifest:algorithm-name="http://www.w3.org/2001/04/xmlenc#aes256-cbc" manifest:initialisation-vector="J18/J74yLBT4jBjlsAICZA=="/>
+   <manifest:start-key-generation manifest:start-key-generation-name="http://www.w3.org/2000/09/xmldsig#sha256" manifest:key-size="32"/>
+   <manifest:key-derivation manifest:key-derivation-name="PBKDF2" manifest:key-size="32" manifest:iteration-count="100000" manifest:salt="iiORUw+LBalEsP79S7PDyA=="/>
+  </manifest:encryption-data>
+ </manifest:file-entry>
+ <manifest:file-entry manifest:full-path="styles.xml" manifest:media-type="text/xml" manifest:size="13331">
+  <manifest:encryption-data manifest:checksum-type="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0#sha256-1k" manifest:checksum="n3Bgcbp6yTGH2GUEWZJBb92Pg3A4VfWYt0NJXKquGD8=">
+   <manifest:algorithm manifest:algorithm-name="http://www.w3.org/2001/04/xmlenc#aes256-cbc" manifest:initialisation-vector="BxcZ6B3yEZmCjrxp3KOtHw=="/>
+   <manifest:start-key-generation manifest:start-key-generation-name="http://www.w3.org/2000/09/xmldsig#sha256" manifest:key-size="32"/>
+   <manifest:key-derivation manifest:key-derivation-name="PBKDF2" manifest:key-size="32" manifest:iteration-count="100000" manifest:salt="H8wl1hS49KWZjHlmPURkFA=="/>
+  </manifest:encryption-data>
+ </manifest:file-entry>
+ <manifest:file-entry manifest:full-path="manifest.rdf" manifest:media-type="application/rdf+xml" manifest:size="1878">
+  <manifest:encryption-data manifest:checksum-type="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0#sha256-1k" manifest:checksum="/qDjwAOqcLTd1ee5NPw8pweN1+fJOvhfiJC2uIj5i4k=">
+   <manifest:algorithm manifest:algorithm-name="http://www.w3.org/2001/04/xmlenc#aes256-cbc" manifest:initialisation-vector="wTAc5l4pf0FYayTXZhKSVQ=="/>
+   <manifest:start-key-generation manifest:start-key-generation-name="http://www.w3.org/2000/09/xmldsig#sha256" manifest:key-size="32"/>
+   <manifest:key-derivation manifest:key-derivation-name="PBKDF2" manifest:key-size="32" manifest:iteration-count="100000" manifest:salt="7Gd9rfi0FG04GTC9Li0SNA=="/>
+  </manifest:encryption-data>
+ </manifest:file-entry>
+ <manifest:file-entry manifest:full-path="Configurations2/" manifest:media-type="application/vnd.sun.xml.ui.configuration"/>
+ <manifest:file-entry manifest:full-path="content.xml" manifest:media-type="text/xml" manifest:size="5406">
+  <manifest:encryption-data manifest:checksum-type="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0#sha256-1k" manifest:checksum="a1WgmC9PPmRwg/m1yJfhBULWWACXrMWlefmlbSOxUXU=">
+   <manifest:algorithm manifest:algorithm-name="http://www.w3.org/2001/04/xmlenc#aes256-cbc" manifest:initialisation-vector="jIwHYSaatim1Bdb8+sOL+g=="/>
+   <manifest:start-key-generation manifest:start-key-generation-name="http://www.w3.org/2000/09/xmldsig#sha256" manifest:key-size="32"/>
+   <manifest:key-derivation manifest:key-derivation-name="PBKDF2" manifest:key-size="32" manifest:iteration-count="100000" manifest:salt="Cy4gBadVNgbauuDPY0yGmw=="/>
+  </manifest:encryption-data>
+ </manifest:file-entry>
+ <manifest:file-entry manifest:full-path="Pictures/10000000000007CE000003E863730D57344BEEBE.jpg" manifest:media-type="image/jpeg" manifest:size="212556">
+  <manifest:encryption-data manifest:checksum-type="urn:oasis:names:tc:opendocument:xmlns:manifest:1.0#sha256-1k" manifest:checksum="cPgxq32gkdo2e1mzL4iybrs72+C4q1ySLUhp4scBrB0=">
+   <manifest:algorithm manifest:algorithm-name="http://www.w3.org/2001/04/xmlenc#aes256-cbc" manifest:initialisation-vector="aU5Tt6c/4HlnfAM+MB0B/g=="/>
+   <manifest:start-key-generation manifest:start-key-generation-name="http://www.w3.org/2000/09/xmldsig#sha256" manifest:key-size="32"/>
+   <manifest:key-derivation manifest:key-derivation-name="PBKDF2" manifest:key-size="32" manifest:iteration-count="100000" manifest:salt="XfHF7oCO/9Z0QrL7+AJAaA=="/>
+  </manifest:encryption-data>
+ </manifest:file-entry>
+</manifest:manifest>

@@ -1,0 +1,4 @@
+- [Ed Skoudis, Welcome to the 2022 SANS Holiday Hack Challenge | KringleCon 2022](https://www.youtube.com/watch?v=4EStXLwBfFg)
+- [Chris Elgee, All I want for AWS is Allow * | KringleCon 2022](https://www.youtube.com/watch?v=t-xDvVUialo)
+- [Eric Pursley, Log Analyzing off the Land](https://www.youtube.com/watch?v=5NZeHYPMXAE)
+- [# Jared Folkins, DevOps Faux Paws](https://www.youtube.com/watch?v=vIQY_FH1SVk)
