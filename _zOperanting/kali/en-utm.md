@@ -6,7 +6,12 @@ https://medium.com/womenintechnology/install-kali-linux-virtual-machine-on-apple
 
 
 ```
-d
+sudo apt install qemu-guest-agent
+sudo apt install spice-vdagent
+```
+
+
+
 ```
 
 
@@ -18,6 +23,8 @@ d
 VirtFS enables [QEMU directory sharing](https://docs.getutm.app/settings-qemu/sharing/#virtfs) as an alternative to SPICE WebDAV.
 
 After making sure your Linux installation [supports 9pfs](https://docs.getutm.app/guest-support/linux/#drivers), you can mount the share with the following command:
+
+```
 
 ```
 $ sudo mkdir [mount point]
@@ -44,3 +51,11 @@ This will not change the permissions on your host system but will store the gues
 
 ## Spice guest tools
 
+```
+sudo systemctl start spice-vdagent
+sudo mkdir -p /etc/systemd/system/spice-vdagent.service.d/
+
+```
+
+
+https://medium.com/@max.kombarov/install-the-spice-guest-agent-tools-on-a-debian-based-system-in-vm-2bc66fc2d95b

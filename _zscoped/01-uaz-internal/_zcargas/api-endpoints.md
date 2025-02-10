@@ -75,17 +75,10 @@ http://10.1.205.9:8080/uaz-rh/config/controlAcceso/grupos/obtenerGrupos
 ## Seguridad
 
 ```
-
-
-
-
 http://10.1.205.9:8080/uaz-rh/seguridad/log/lista
-
-
 
 UazRH.Core.API.Seguridad.UsuarioPermiso
 path = "/seguridad/usuario_permiso/
-
 
 http://10.1.205.9:8080/uaz-rh/seguridad/usuario_permiso/obtenerAccionesMovimientosDirectos/50
 http://10.1.205.9:8080/uaz-rh/seguridad/usuario_permiso/obtenerAccionesModuloAdministrarCargaLaboral/50

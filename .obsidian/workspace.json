@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "2c152a68168b3ae3",
+        "id": "85a9a7e75c37340d",
         "type": "tabs",
         "children": [
           {
-            "id": "c7c5c2ffa5c352e3",
+            "id": "0ded9f683f9e3a69",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "_zOperanting/Mac/02-instalar_afterup.md",
+                "file": "GIT/configurar.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02-instalar_afterup"
-            }
-          },
-          {
-            "id": "1f0e9f5a98088cd6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "README"
+              "title": "configurar"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -55,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -67,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "security",
+                "query": "git",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -92,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 392.5
+    "width": 291.5
   },
   "right": {
     "id": "5df4a3440cf8f5c7",
@@ -175,7 +161,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -188,43 +175,43 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1f0e9f5a98088cd6",
+  "active": "0ded9f683f9e3a69",
   "lastOpenFiles": [
-    "GIT/configurar.md",
-    "CTFs/CTFs-2022/12-08-Sans Holiday/11-aws-cli-intro.md",
-    "_zOperanting/Mac/02-instalar_afterup.md",
-    "_zscoped/01-uaz-internal/pwned/srv-virtual3/srvuaz-dhcp1-10.1.205.15.md",
-    "_zOperanting/vmware-kali.md",
-    "_zOperanting/Mac/01-respaldar-formaterar.md",
-    "api/owasp-api-1/1-broken-objet-level-authorisation.md",
-    "_zOperanting/libreoffice.md",
-    "_zOperanting/openvpn.md",
-    "_zOperanting/zip files.md",
-    "_zOperanting/git.md",
-    "_zOperanting/kali.md",
-    "Labs/INE-labs/reto-ano-nuevo.md",
-    "_zscoped/01-uaz-internal/base-datos/escolar-3.md",
-    "Labs/INE-labs",
-    "_zscoped/01-uaz-internal/base-datos/escolar-2.md",
-    "_zscoped/01-uaz-internal/base-datos/escolar.md",
-    "_zscoped/01-uaz-internal/base-datos/_nuevaluz_.md",
-    "_zscoped/01-uaz-internal/10.1/10.1.175.2-.md",
-    "_zscoped/01-uaz-internal/_zcargas/_zInfo/control-acces-usuarios.md",
-    "_zscoped/01-uaz-internal/pwned/kvm01/ns1.md",
-    "_zscoped/01-uaz-internal/pwned/kvm01/backups.md",
-    "_zscoped/01-uaz-internal/pwned/kvm01/auth.md",
-    "_zscoped/01-uaz-internal/pwned/kvm01/_kvm01.md",
-    "Labs/Tryhackme/sr-2024/clase09/3-Windows PrivEsc.md",
-    "_zscoped/01-uaz-internal/pwned/srv-virtual4/srvuaz-dhcp2.md",
-    "Labs/Tryhackme/sr-2024/clase08/2-blaster.md",
-    "Labs/hackthebox/starting-point/tire-0",
-    "Labs/hackthebox/starting-point",
-    "Labs/hackthebox",
-    "virtualization",
-    "CTFs/ctfs-2024/12-sans-holiday-hack/01-prologue",
-    "CTFs/ctfs-2024/12-sans-holiday-hack/act-1",
-    "CTFs/ctfs-2024/12-tryhackme-advent",
-    "CTFs/ctfs-2024/12-sans-holiday-hack/terminales",
-    "DR. CASTAÑEDA.pdf"
+    "CTFs/picoCTF/2023/01-general-skills/01-repetitions.md",
+    "CTFs/picoCTF/2024/01-general-skills/2-Commitment Issues.md",
+    "CTFs/picoCTF/2024/01-general-skills/1-Super SSH.md",
+    "CTFs/picoCTF/2024/01-general-skills/SansAlpha.md",
+    "CTFs/picoCTF/2024/01-general-skills/08-endianness.md",
+    "CTFs/picoCTF/2024/01-general-skills/07-Binary Search.md",
+    "CTFs/picoCTF/2024/01-general-skills/06-binhexa.md",
+    "CTFs/picoCTF/2024/01-general-skills/05-Collaborative Development.md",
+    "CTFs/picoCTF/2024/01-general-skills/4-Blame Game.md",
+    "CTFs/picoCTF/2024/01-general-skills/3-Time Machine.md",
+    "CTFs/picoCTF/2019/00-general-skills/08-Based.md",
+    "CTFs/picoCTF/2023/01-general-skills/Specialer.md",
+    "CTFs/picoCTF/2023/01-general-skills/special.md",
+    "CTFs/picoCTF/2023/01-general-skills/03-Permissions.md",
+    "CTFs/picoCTF/2023/01-general-skills/02-useless.md",
+    "CTFs/picoCTF/2021/00-general-skills/2-Nice netcat....md",
+    "CTFs/picoCTF/2022-beginner picoctf 2022/00-general-skills/01-Glitch Cat.md",
+    "CTFs/picoCTF/2019/00-general-skills/07-plumbing.md",
+    "CTFs/picoCTF/2019/00-general-skills/06-whats a net cat.md",
+    "CTFs/picoCTF/2021/00-general-skills/1-Obedient Cat.md",
+    "CTFs/picoCTF/2019/00-general-skills/05-First Grep.md",
+    "CTFs/picoCTF/2019/reversing/14-asm2.md",
+    "CTFs/picoCTF/2019/reversing/13-asm1.md",
+    "CTFs/picoCTF/2019/reversing/18 - Need For Speed.md",
+    "CTFs/picoCTF/2019/reversing/19 - B1ll_Gat35.md",
+    "CTFs/picoCTF/2024/05-binary-explotation/01-format string 0.md",
+    "CTFs/picoCTF/2022-beginner picoctf 2022/00-general-skills",
+    "CTFs/picoCTF/2022-beginner picoctf 2022",
+    "CTFs/picoCTF/2021/00-general-skills",
+    "CTFs/picoCTF/2019/00-general-skills",
+    "CTFs/picoCTF/General-Skills",
+    "_Diary/_2025/diario-2025",
+    "_Diary/_2025",
+    "Untitled 1",
+    "AI",
+    "google"
   ]
 }

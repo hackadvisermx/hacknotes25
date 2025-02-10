@@ -17,21 +17,19 @@ ssh-add -l
 
 - Agregar llaves al agente
 ```
-ssh-add ~/.ssh/hackadviser
-ssh-add ~/.ssh/castr
+ssh-add ~/.ssh/hackadvisermx
+ssh-add ~/.ssh/castruaz
 ```
-
-
 
 
 - Crear archivo de configuracion ~/.ssh/config
 ```
-Host hackadviser
+Host hackadvisermx
   Hostname github.com
   IdentityFile ~/.ssh/hackadvisermx
   IdentitiesOnly yes
 
-Host castr
+Host castruaz
   Hostname github.com
   IdentityFile ~/.ssh/castruaz
   IdentitiesOnly yes
@@ -42,8 +40,8 @@ Host castr
 
 - Verificar que las llaves ssh funcionan
 ```
-ssh -vT git@hackadviser
-ssh -vT git@castr
+ssh -vT git@hackadvisermx
+ssh -vT git@castruaz
 ```
 
 - borrar todas las configuraciones globales

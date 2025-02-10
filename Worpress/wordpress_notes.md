@@ -8,7 +8,7 @@ wpscan --url http://10.10.237.142/wordpress -e u,ap,t
 
 - wpscan brute 
 ```
-wpscan --url http://10.10.10.120/wp/wordpress -P /usr/share/wordlists/SecLists/Passwords/darkweb2017-top10000.txt -U admin -t 50
+wpscan --url http://10.10.10.120/wp/wordpress -P   -U admin -t 50
 ```
 
 - reverse shell modificando un tema

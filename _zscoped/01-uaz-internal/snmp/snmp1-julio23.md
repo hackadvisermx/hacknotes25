@@ -1,4 +1,4 @@
-
+s
 ```
 [!] No active DB -- Credential data will not be saved!
 [+] 10.1.0.24:161 - Login Successful: manager (Access level: read-only); Proof (sysDescr.0): 3Com SuperStack 3

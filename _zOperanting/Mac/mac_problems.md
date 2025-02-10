@@ -7,13 +7,9 @@ https://es.ifixit.com/Respuestas/Ver/320496/Randomly+shuts+down+when+not+connect
 - dummy hdmi conector
 - deshabiitar el driver de ethernet por tunderbolt
 
-
-
 ## Scrool con track pad no funciona
 
 https://appuals.com/fix-trackpad-scroll-not-working-on-macos/
-
-
 
 
 - Teclear acentos estando en teclado e ingles
