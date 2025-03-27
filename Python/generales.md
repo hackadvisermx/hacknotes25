@@ -3,23 +3,23 @@
 
 ## Tipos de datos
 
-| Tipo  | Ejemplo
-|:------|:------------------|
-| int   | a = 28            |
-| float | b = 1.5           |
-| str   | c = "Hola"        |
-| bool  | d = True          |
-| NoType| e = None          |
+| Tipo   | Ejemplo    |
+| :----- | :--------- |
+| int    | a = 28     |
+| float  | b = 1.5    |
+| str    | c = "Hola" |
+| bool   | d = True   |
+| NoType | e = None   |
 
 
 ## Estructuras de datos
 
-| Tipo  | Descripción                       | Ejemplo
-|:------|:----------------------------------|---------------------------------------
-| list  | secuencia de valores mutables     | nombres=["Carlos","Esteban","Fatima"] |
-| tuple | secuencia de valores inmutables   | 
-| set   | colección de valores únicos
-| dict  | colección de pares key-value
+| Tipo  | Descripción                     | Ejemplo                               |
+| :---- | :------------------------------ | ------------------------------------- |
+| list  | secuencia de valores mutables   | nombres=["Carlos","Esteban","Fatima"] |
+| tuple | secuencia de valores inmutables |                                       |
+| set   | colección de valores únicos     |                                       |
+| dict  | colección de pares key-value    |                                       |
 
 ### Listas [] - Ordenadas, cambiables, permiten duplicados
 

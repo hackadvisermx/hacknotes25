@@ -100,7 +100,7 @@ dpkg -l
 
 ## Users
 
-- who, whomi, w, id
+- who, whoami, w, id
 
 ```
 user@red-linux-enumeration:~$ who

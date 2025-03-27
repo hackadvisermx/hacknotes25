@@ -17,8 +17,10 @@ nameserver 8.8.8.8
 nameserver 8.8.8.4
 ```
 
-- luego editamos
+- luego editamos: 
 ```
+sudo nano /etc/NetworkManager/NetworkManager.conf
+
 [main]
 dns=none
 

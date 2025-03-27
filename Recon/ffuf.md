@@ -82,7 +82,7 @@ ffuf -u http://10.10.163.135/FUZZ -c -w /usr/share/seclists/Discovery/Web-Conten
 
 ## Otras opciones
 
-| opcion              | Descripcion
+| opcion              | Descripcion |
 |:--------------------|:-----------------------------|
 | -of md -o ffuf.md   | Grabar salida en formato md
 | -request            | Reutilizar request raw http

@@ -4,21 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "85a9a7e75c37340d",
+        "id": "dadc594139f24405",
         "type": "tabs",
         "children": [
           {
-            "id": "0ded9f683f9e3a69",
+            "id": "75c35d41a93c4316",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GIT/configurar.md",
+                "file": "Labs/Tryhackme/sr-2024/clase06/03-lianyu.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "configurar"
+              "title": "03-lianyu"
+            }
+          },
+          {
+            "id": "7f0653105217c6b4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "BlueTeam/Tools/Splunk/splunk-101.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "splunk-101"
             }
           }
         ]
@@ -53,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "git",
+                "query": "lianyu",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -74,11 +88,12 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 291.5
+    "width": 473.5
   },
   "right": {
     "id": "5df4a3440cf8f5c7",
@@ -175,43 +190,43 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0ded9f683f9e3a69",
+  "active": "75c35d41a93c4316",
   "lastOpenFiles": [
-    "CTFs/picoCTF/2023/01-general-skills/01-repetitions.md",
-    "CTFs/picoCTF/2024/01-general-skills/2-Commitment Issues.md",
-    "CTFs/picoCTF/2024/01-general-skills/1-Super SSH.md",
-    "CTFs/picoCTF/2024/01-general-skills/SansAlpha.md",
-    "CTFs/picoCTF/2024/01-general-skills/08-endianness.md",
-    "CTFs/picoCTF/2024/01-general-skills/07-Binary Search.md",
-    "CTFs/picoCTF/2024/01-general-skills/06-binhexa.md",
-    "CTFs/picoCTF/2024/01-general-skills/05-Collaborative Development.md",
-    "CTFs/picoCTF/2024/01-general-skills/4-Blame Game.md",
-    "CTFs/picoCTF/2024/01-general-skills/3-Time Machine.md",
-    "CTFs/picoCTF/2019/00-general-skills/08-Based.md",
-    "CTFs/picoCTF/2023/01-general-skills/Specialer.md",
-    "CTFs/picoCTF/2023/01-general-skills/special.md",
-    "CTFs/picoCTF/2023/01-general-skills/03-Permissions.md",
-    "CTFs/picoCTF/2023/01-general-skills/02-useless.md",
-    "CTFs/picoCTF/2021/00-general-skills/2-Nice netcat....md",
-    "CTFs/picoCTF/2022-beginner picoctf 2022/00-general-skills/01-Glitch Cat.md",
-    "CTFs/picoCTF/2019/00-general-skills/07-plumbing.md",
-    "CTFs/picoCTF/2019/00-general-skills/06-whats a net cat.md",
-    "CTFs/picoCTF/2021/00-general-skills/1-Obedient Cat.md",
-    "CTFs/picoCTF/2019/00-general-skills/05-First Grep.md",
-    "CTFs/picoCTF/2019/reversing/14-asm2.md",
-    "CTFs/picoCTF/2019/reversing/13-asm1.md",
-    "CTFs/picoCTF/2019/reversing/18 - Need For Speed.md",
-    "CTFs/picoCTF/2019/reversing/19 - B1ll_Gat35.md",
-    "CTFs/picoCTF/2024/05-binary-explotation/01-format string 0.md",
-    "CTFs/picoCTF/2022-beginner picoctf 2022/00-general-skills",
-    "CTFs/picoCTF/2022-beginner picoctf 2022",
-    "CTFs/picoCTF/2021/00-general-skills",
-    "CTFs/picoCTF/2019/00-general-skills",
-    "CTFs/picoCTF/General-Skills",
-    "_Diary/_2025/diario-2025",
-    "_Diary/_2025",
-    "Untitled 1",
-    "AI",
-    "google"
+    "_Diary/_2025/diario-2025/2025-03-26.md",
+    "BlueTeam/Tools/Splunk/splunk-101.md",
+    "BlueTeam/Threat Intelligence/Alerts.md",
+    "BlueTeam/Skills and Certifications/Certifications.md",
+    "Bash/bash_scripting.md",
+    "api/owasp-api-1/1-broken-objet-level-authorisation.md",
+    "AI/notas-1.md",
+    "_Diary/2023/diario-2023/27-nov-23.md",
+    "_zOperanting/kali/pimpmykali.md",
+    "_zOperanting/kali/openvpn.md",
+    "_zOperanting/kali/manejador ventanas.md",
+    "_zOperanting/kali/kali-general.md",
+    "_zOperanting/kali/kali-burp.md",
+    "_zOperanting/kali/install sagemath.md",
+    "_zOperanting/kali/en-utm.md",
+    "_zOperanting/kali/dns.md",
+    "_zOperanting/kali/arp.md",
+    "_zOperanting/kali/Pyhton/venv.md",
+    "_zOperanting/kali/Pyhton/pipx.md",
+    "_zOperanting/kali/Pyhton/pip2.md",
+    "_zOperanting/kali/Pyhton/mac-venv.md",
+    "_Diary/2023/diario-2023/06-junio-2023.md",
+    "_Diary/2023/diario-2023/08-ago-2023.md",
+    "_Diary/2023/diario-2023/05-mayo-2023.md",
+    "_Diary/2023/diario-2023/03-marzo-2023.md",
+    "_Diary/2022/generales-2022.md",
+    "CTFs/ctfs-2025/03-23-ritsec/hashing",
+    "CTFs/ctfs-2025/03-23-ritsec/misc",
+    "CTFs/ctfs-2025/03-23-ritsec",
+    "Tryhackme/2025/Hackfinity Battle/osint",
+    "Tryhackme/2025/Hackfinity Battle",
+    "CTFs/picoCTF/2025/5-reversing",
+    "CTFs/picoCTF/2025/4-forensic",
+    "CTFs/picoCTF/2025/3-crypto",
+    "CTFs/ctfs-2025/themarvels-anuies/forensic",
+    "CTFs/ctfs-2025/themarvels-anuies/reversing"
   ]
 }

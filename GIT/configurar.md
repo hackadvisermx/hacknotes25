@@ -5,8 +5,8 @@
 
 - Crear una llave ssh para cada cuenta
 ```
-ssh-keygen -t rsa -C "hackadviser@gmail.com" -f ~/.ssh/hackadviser
-ssh-keygen -t rsa -C "castr@uaz.edu.mx" -f ~/.ssh/castr
+ssh-keygen -t rsa -C "hackadviser@gmail.com" -f ~/.ssh/hackadvisermx
+ssh-keygen -t rsa -C "castr@uaz.edu.mx" -f ~/.ssh/castruaz
 ```
 
 - Borrar y listar llaves cacheadas

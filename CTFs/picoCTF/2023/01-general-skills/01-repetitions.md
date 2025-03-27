@@ -4,7 +4,8 @@
 Can you make sense of this file?Download the file [here](https://artifacts.picoctf.net/c/475/enc_flag).
 
 
-## Solve
+## Solve 1
+
 
 ```
 astr@macpro-carlos test % cat enc_flag
@@ -33,4 +34,24 @@ cGljb0NURntiYXNlNjRfbjNzdDNkX2RpYzBkIW44X2Qwd25sMDRkM2RfNDkyNzY3ZDJ9Cg==
 castr@macpro-carlos test % cat enc_flag | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d | base64 -d
 picoCTF{base64_n3st3d_dic0d!n8_d0wnl04d3d_492767d2}
 castr@macpro-carlos test %
+```
+
+## Solve 2
+
+```python
+import base64  
+  
+with open('enc_flag') as file:  
+	data = file.read()  
+  
+while 'picoCTF' not in data:  
+	data = base64.b64decode(data).decode('utf8')  
+  
+print(data)
+
+```
+- ejecutamos
+```
+python exp.py 
+picoCTF{base64_n3st3d_dic0d!n8_d0wnl04d3d_3f81f7be}
 ```

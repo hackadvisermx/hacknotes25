@@ -11,7 +11,6 @@ sudo apt install spice-vdagent
 ```
 
 
-
 ```
 
 
@@ -56,6 +55,4 @@ sudo systemctl start spice-vdagent
 sudo mkdir -p /etc/systemd/system/spice-vdagent.service.d/
 
 ```
-
-
 https://medium.com/@max.kombarov/install-the-spice-guest-agent-tools-on-a-debian-based-system-in-vm-2bc66fc2d95b

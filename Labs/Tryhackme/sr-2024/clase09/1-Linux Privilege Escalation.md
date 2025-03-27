@@ -52,7 +52,7 @@ karen@wade7363:/$ ps -axjf
 
 >> procesos para todos los usuarios
 
-karen@wade7363:/$ ps -aux
+karen@wade7363:/$ sud
 
 ```
 
@@ -154,45 +154,7 @@ sshd:x:116:65534::/var/run/sshd:/usr/sbin/nologin
 
 >> grep users
 
-karen@wade7363:/$ cat /etc/passwd | cut -d ":"  -f 1
-root
-daemon
-bin
-sys
-sync
-games
-man
-lp
-mail
-news
-uucp
-proxy
-www-data
-backup
-list
-irc
-gnats
-nobody
-libuuid
-syslog
-messagebus
-usbmux
-dnsmasq
-avahi-autoipd
-kernoops
-rtkit
-saned
-whoopsie
-speech-dispatcher
-avahi
-lightdm
-colord
-hplip
-pulse
-matt
-karen
-sshd
-
+karen@wade7363:/$ if
 ```
 
 #### history

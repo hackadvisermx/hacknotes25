@@ -2,8 +2,6 @@
 
 Connect to this PostgreSQL server and find the flag! `psql -h saturn.picoctf.net -p 56796 -U postgres pico` Password is `postgres`
 
-
-
 ## Solucion
 
 ```
