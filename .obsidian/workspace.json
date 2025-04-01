@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "dadc594139f24405",
+        "id": "b8c27c2037b0a7a8",
         "type": "tabs",
         "children": [
           {
-            "id": "75c35d41a93c4316",
+            "id": "cac631a4e64c235f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GIT/configurar.md",
+                "file": "Tryhackme/2025/startup.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "configurar"
-            }
-          },
-          {
-            "id": "7f0653105217c6b4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "BlueTeam/Tools/Splunk/splunk-101.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "splunk-101"
+              "title": "startup"
             }
           }
         ]
@@ -67,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "lianyu",
+                "query": "startup",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -88,11 +74,13 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 473.5
+    "width": 496.5,
+    "collapsed": true
   },
   "right": {
     "id": "5df4a3440cf8f5c7",
@@ -189,43 +177,44 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "75c35d41a93c4316",
+  "active": "cac631a4e64c235f",
   "lastOpenFiles": [
-    "Labs/Tryhackme/sr-2024/clase06/03-lianyu.md",
-    "_Diary/_2025/diario-2025/2025-03-26.md",
-    "BlueTeam/Tools/Splunk/splunk-101.md",
-    "BlueTeam/Threat Intelligence/Alerts.md",
-    "BlueTeam/Skills and Certifications/Certifications.md",
-    "Bash/bash_scripting.md",
-    "api/owasp-api-1/1-broken-objet-level-authorisation.md",
-    "AI/notas-1.md",
-    "_Diary/2023/diario-2023/27-nov-23.md",
-    "_zOperanting/kali/pimpmykali.md",
-    "_zOperanting/kali/openvpn.md",
-    "_zOperanting/kali/manejador ventanas.md",
-    "_zOperanting/kali/kali-general.md",
-    "_zOperanting/kali/kali-burp.md",
-    "_zOperanting/kali/install sagemath.md",
-    "_zOperanting/kali/en-utm.md",
-    "_zOperanting/kali/dns.md",
-    "_zOperanting/kali/arp.md",
-    "_zOperanting/kali/Pyhton/venv.md",
-    "_zOperanting/kali/Pyhton/pipx.md",
+    "CTFs/picoCTF/2021/Web/05-most cookies.md",
+    "CTFs/picoCTF/2019/01-web/10-jawt-scratchpad.md",
+    "Labs/Tryhackme/sr-2024/clase07/07-easypeasyctf.md",
+    "Labs/Tryhackme/sr-2024/examen01/1-easyctf.md",
     "_zOperanting/kali/Pyhton/pip2.md",
-    "_zOperanting/kali/Pyhton/mac-venv.md",
-    "_Diary/2023/diario-2023/06-junio-2023.md",
-    "_Diary/2023/diario-2023/08-ago-2023.md",
-    "_Diary/2023/diario-2023/05-mayo-2023.md",
-    "_Diary/2023/diario-2023/03-marzo-2023.md",
-    "CTFs/ctfs-2025/03-23-ritsec/hashing",
-    "CTFs/ctfs-2025/03-23-ritsec/misc",
-    "CTFs/ctfs-2025/03-23-ritsec",
-    "Tryhackme/2025/Hackfinity Battle/osint",
-    "Tryhackme/2025/Hackfinity Battle",
-    "CTFs/picoCTF/2025/5-reversing",
-    "CTFs/picoCTF/2025/4-forensic",
-    "CTFs/picoCTF/2025/3-crypto",
-    "CTFs/ctfs-2025/themarvels-anuies/forensic",
-    "CTFs/ctfs-2025/themarvels-anuies/reversing"
+    "_zOperanting/kali/Pyhton/pipx.md",
+    "_zOperanting/kali/Pyhton/venv.md",
+    "Labs/Tryhackme/sr-2024/clase07/Easy Peasy.md",
+    "_Diary/_2025/canasta-2025/1-uaz/1-las clases.md",
+    "_Diary/_2025/canasta-2025/1-uaz/0-doctorado.md",
+    "_Diary/_2025/canasta-2025/0-personal/improve.md",
+    "_Diary/2023/canasta-2023/0-personal/improve.md",
+    "_Diary/_2025/canasta-2025/9-proyectos/GoogleEducation/GoogleCloudFundations/04-use-google-cloud-to-build-your-apps/lab-03-cloud-functions-qwik-start-command-line.md",
+    "_Diary/_2025/canasta-2025/9-proyectos/GoogleEducation/GoogleCloudFundations/04-use-google-cloud-to-build-your-apps",
+    "_Diary/_2025/canasta-2025/9-proyectos/GoogleEducation/GoogleCloudFundations/lab-02-app-engine-qwik-start-pyton.md",
+    "_Diary/_2025/canasta-2025/9-proyectos/metared-ctf/colabora-retos.md",
+    "_Diary/_2025/canasta-2025/9-proyectos/GoogleEducation/GoogleCloudFundations",
+    "_Diary/_2025/canasta-2025/9-proyectos/discord-server/notas-discord-server.md",
+    "_Diary/_2025/canasta-2025/9-proyectos/ctf-on-house/ctf-notes.md",
+    "_Diary/_2025/canasta-2025/05-bugbunties/kali-docker/kali-docker-notes.md",
+    "_Diary/_2025/canasta-2025/9-proyectos/metared-ctf",
+    "_Diary/_2025/canasta-2025/9-proyectos/discord-server",
+    "_Diary/_2025/canasta-2025/9-proyectos/ctf-on-house",
+    "_Diary/_2025/canasta-2025/9-proyectos/Untitled.md",
+    "_Diary/_2025/canasta-2025/9-proyectos/GoogleEducation",
+    "_Diary/_2025/canasta-2025/4-rancho/_notas-rancho.md",
+    "_Diary/_2025/canasta-2025/1-uaz/3-perfil-prodep.md",
+    "_Diary/_2025/canasta-2025/3-canal-youtube/notas-canal.md",
+    "_Diary/_2025/canasta-2025/2-cursos/cursos-propuesta.md",
+    "_Diary/_2025/canasta-2025/2-cursos/_notas-cursos.md",
+    "_Diary/_2025/canasta-2025/1-uaz/2-la-investigacion.md",
+    "_Diary/_2025/canasta-2025/05-bugbunties/notas-bugbounty.md",
+    "_Diary/_2025/canasta-2025/05-bugbunties/kali-docker",
+    "_Diary/_2025/canasta-2025/Canastas.canvas",
+    "_Diary/_2025/canasta-2025/9-proyectos",
+    "_Diary/_2025/canasta-2025/4-rancho",
+    "_Diary/_2025/canasta-2025/3-canal-youtube"
   ]
 }

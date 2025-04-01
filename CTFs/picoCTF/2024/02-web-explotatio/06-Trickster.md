@@ -1,4 +1,5 @@
 
+
 I found a web app that can help process images: PNG images only!
 
 Additional details will be available after launching your challenge instance

