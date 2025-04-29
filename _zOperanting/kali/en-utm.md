@@ -11,11 +11,10 @@ sudo apt install spice-vdagent
 ```
 
 
-```
-
 
 ## Compartir la carpeta de utm a kali
-
+```
+```
 
 ## VirtFS
 

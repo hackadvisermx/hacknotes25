@@ -1,0 +1,46 @@
+{
+  "items": [
+    {
+      "type": "folder",
+      "ctime": 1743521692899,
+      "path": "CTFs",
+      "title": "ctfs"
+    },
+    {
+      "type": "folder",
+      "ctime": 1743521734562,
+      "path": "CTFs/picoCTF",
+      "title": "picoCTF"
+    },
+    {
+      "type": "folder",
+      "ctime": 1743548113590,
+      "path": "Tryhackme",
+      "title": "tryhackme"
+    },
+    {
+      "type": "folder",
+      "ctime": 1744307810297,
+      "path": "Tryhackme/2025",
+      "title": "tryhackme-2025"
+    },
+    {
+      "type": "folder",
+      "ctime": 1744764915261,
+      "path": "Labs/promptriddle",
+      "title": "Prompt Riddle"
+    },
+    {
+      "type": "folder",
+      "ctime": 1744852807383,
+      "path": "Prompts",
+      "title": "Prompts"
+    },
+    {
+      "type": "folder",
+      "ctime": 1745674947807,
+      "path": "Sodel",
+      "title": "sodel"
+    }
+  ]
+}
