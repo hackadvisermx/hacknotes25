@@ -1,7 +1,7 @@
 
 https://tryhackme.com/r/room/linuxserverforensics
 
-## Task 1 Deploy the first VM
+## Task 1 - Deploy the first VM
 
 - 10.10.10.150
 - Username - 'fred'
